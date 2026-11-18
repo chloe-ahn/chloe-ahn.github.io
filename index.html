@@ -5,87 +5,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chloe Ahn</title>
 <style>
-body{margin:0;background:#fff;color:#111;font:16px/1.55 "Times New Roman",Times,serif}
-.page{max-width:720px;margin:0 auto;padding:40px 18px 60px}
-.top{overflow:hidden;margin-bottom:6px}
-.top img{float:right;width:120px;margin:0 0 10px 20px}
-.name{font-size:26px;font-weight:bold;margin:0 0 6px}
-.top p{margin:0}
-.links{margin-top:10px}
-a{color:#0645ad;text-decoration:none}
-a:hover{text-decoration:underline}
-h2{font-size:18px;margin:26px 0 6px}
-p{margin:0 0 10px}
-.t{font-weight:bold}
-.small{font-size:14px}
-.abs{font-size:15px;margin:4px 0 0}
-details summary{cursor:pointer;color:#0645ad;font-size:15px;list-style:none}
-details summary::-webkit-details-marker{display:none}
-ul{margin:4px 0 10px;padding-left:20px}
-li{margin:2px 0}
-table{border-collapse:collapse}
-td{vertical-align:top;padding:0 32px 6px 0;font-size:15px}
-.foot{margin-top:40px;font-size:13px;color:#555}
-@media (max-width:560px){.top img{width:96px}td{display:block;padding-bottom:10px}}
+@font-face{font-family:"Source Serif 4";src:url(files/fonts/source-serif-4-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(files/fonts/source-serif-4-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(files/fonts/source-serif-4-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Source Serif 4";src:url(files/fonts/source-serif-4-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(files/fonts/inter-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(files/fonts/inter-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Inter";src:url(files/fonts/inter-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Inter";src:url(files/fonts/inter-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+
+:root{--ink:#15171A;--text:#2B2F35;--muted:#646A73;--line:#E6E8EB;--link:#1F4A7A;--link-hover:#122F52}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font:16px/1.65 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--link-hover);text-decoration:underline}
+.serif{font-family:"Source Serif 4",Georgia,"Times New Roman",serif}
+.page{max-width:880px;margin:0 auto;padding:88px 24px 56px}
+
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:24px 36px;padding-bottom:44px}
+.top img{width:132px;height:132px;border-radius:6px;object-fit:cover;flex:0 0 auto}
+.top .who{flex:999 1 340px;min-width:0}
+h1{margin:0;font-weight:600;font-size:44px;line-height:1.1;letter-spacing:-.015em;color:var(--ink)}
+.role{margin:8px 0 0;font-size:17px}
+.links{display:flex;flex-wrap:wrap;gap:4px 22px;margin-top:12px;font-size:15px;font-weight:500}
+
+.intro{margin:0;padding:40px 0 52px;border-top:1px solid var(--line);font-size:21px;line-height:1.6;color:var(--ink)}
+
+section{display:flex;flex-wrap:wrap;gap:8px 40px;padding:38px 0;border-top:1px solid var(--line)}
+h2{flex:0 0 168px;margin:0;padding-top:4px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.body{flex:999 1 480px;min-width:0}
+.paper+.paper{margin-top:36px}
+.title{margin:0;font-weight:600;font-size:23px;line-height:1.3;color:var(--ink)}
+.title.sm{font-weight:500;font-size:19px;line-height:1.4}
+.meta{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.meta a{font-weight:500}
+.abs{margin:16px 0 0;font-size:15.5px;line-height:1.7}
+
+details{margin-top:22px}
+.abs-toggle{margin-top:6px}
+.abs-toggle .abs{margin-top:4px}
+summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:500;color:var(--link)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" +";white-space:pre}
+details[open] summary::after{content:" \2212"}
+.boks{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14.5px;line-height:1.55}
+
+.row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 16px}
+.row+.row{margin-top:8px}
+.row span:first-child{color:var(--ink)}
+.row span:last-child{font-size:14px;color:var(--muted)}
+
+.refs{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px 16px;font-size:14px;line-height:1.55}
+.refs a{font-size:13px;overflow-wrap:anywhere}
+.refs p{margin:0}
+.refs .n{font-size:16px;font-weight:500;color:var(--ink)}
+.refs .a{color:var(--muted)}
+
+footer{margin-top:28px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+@media (max-width:560px){
+  .page{padding-top:48px}
+  h1{font-size:36px}
+  .intro{font-size:19px}
+  .top img{width:104px;height:104px}
+}
 </style>
 </head>
 <body>
 <div class="page">
 
-<div class="top">
-<img src="photo.jpg" alt="Chloe Ahn">
-<p class="name">Chloe Ahn</p>
-<p>PhD Candidate in Economics</p>
-<p>University of Bristol</p>
-<p><a href="mailto:ahn.chloe.sh@gmail.com">ahn.chloe.sh@gmail.com</a></p>
-<p class="links"><a href="files/Ahn_CV.pdf">CV</a></p>
-</div>
+<header class="top">
+  <img src="photo.jpg" alt="Chloe Ahn">
+  <div class="who">
+    <h1 class="serif">Chloe Ahn</h1>
+    <p class="role">PhD Candidate in Economics, University of Bristol</p>
+    <nav class="links" aria-label="Links">
+      <a href="files/Ahn_CV.pdf">CV</a>
+      <a href="mailto:ahn.chloe.sh@gmail.com">ahn.chloe.sh@gmail.com</a>
+    </nav>
+  </div>
+</header>
 
-<p>I am a macroeconomist working on household finance, housing, public economics, inequality and measurement. I study how the economic environment and public policy shape what households own and save over their lives, and who bears the resulting gains and losses. I am also interested in how household saving interacts with asset prices and long-term interest rates.</p>
+<p class="intro serif">I am a macroeconomist working on household finance, housing, public economics, inequality and measurement. I study how the economic environment and public policy shape what households own and save over their lives, and who bears the resulting gains and losses. I am also interested in how household saving interacts with asset prices and long-term interest rates.</p>
 
-<h2>Working Paper</h2>
-<p class="t" style="margin-bottom:2px">Priced Out: Housing Costs, Generational Wealth Gaps, and Youth Welfare</p>
-<details>
-<summary><a href="files/Ahn_JMP.pdf">[PDF]</a>&nbsp; <span class="small" style="color:#555">latest version October 2026</span>&nbsp; [Abstract]</summary>
-<p class="abs">Each US birth cohort from 1940 to 1980 has owned less housing than the one before it. In the Panel Study of Income Dynamics, ownership among household heads aged 25 to 34 fell from 53 percent in the 1940 cohort to 31 percent in the 1980 cohort. I estimate a life-cycle model of saving, tenure and housing quality on the 1940 cohort, then hold preferences fixed and let each later cohort face the house prices, interest rates and earnings of its own time. The changing environment alone produces a fall in ownership of about the size seen in the data. House prices account for the largest part of the ownership gap, while earnings account for somewhat more of the welfare loss, which falls hardest on households with low income and little wealth.</p>
-</details>
+<section aria-labelledby="h-wp">
+  <h2 id="h-wp">Working Paper</h2>
+  <div class="body">
+    <p class="title serif">Priced Out: Housing Costs, Generational Wealth Gaps, and Youth Welfare</p>
+    <p class="meta"><a href="files/Ahn_JMP.pdf">PDF</a> · Latest version October 2026</p>
+    <details class="abs-toggle">
+      <summary>Abstract</summary>
+      <p class="abs">Each US birth cohort from 1940 to 1980 has owned less housing than the one before it. In the Panel Study of Income Dynamics, ownership among household heads aged 25 to 34 fell from 53 percent in the 1940 cohort to 31 percent in the 1980 cohort. I estimate a life-cycle model of saving, tenure and housing quality on the 1940 cohort, then hold preferences fixed and let each later cohort face the house prices, interest rates and earnings of its own time. The changing environment alone produces a fall in ownership of about the size seen in the data. House prices account for the largest part of the ownership gap, while earnings account for somewhat more of the welfare loss, which falls hardest on households with low income and little wealth.</p>
+    </details>
+  </div>
+</section>
 
-<h2>Work in Progress</h2>
-<p class="t" style="margin-bottom:2px">Taxed Out or Priced Out?</p>
-<p style="font-size:15px"><a href="files/Ahn_PropertyTax.pdf">[PDF]</a>&nbsp; <span class="small" style="color:#555">draft expected early 2027</span></p>
+<section aria-labelledby="h-wip">
+  <h2 id="h-wip">Work in Progress</h2>
+  <div class="body">
+    <p class="title serif"><a href="files/Ahn_PropertyTax.pdf" style="color:inherit">Taxed Out or Priced Out? Homestead Exemptions, Assessment Caps and Who Pays for Local Government</a></p>
+    <p class="meta"><a href="files/Ahn_PropertyTax.pdf">Abstract (PDF)</a></p>
+  </div>
+</section>
 
-<h2>Other Research</h2>
-<p class="t" style="margin-bottom:0">The Minimum Wage Spillover Effects: Asymmetry and Heterogeneity Models</p>
-<p class="small" style="color:#555">MSc essay, London School of Economics, 2022</p>
+<section aria-labelledby="h-other">
+  <h2 id="h-other">Other Research</h2>
+  <div class="body">
+    <p class="title sm serif">The Minimum Wage Spillover Effects: Asymmetry and Heterogeneity Models</p>
+    <p class="meta">MSc essay, London School of Economics, 2022</p>
+  </div>
+</section>
 
-<h2>Publications</h2>
-<p>Estimating Exchange Rate Exposure over Various Return Horizons: Focusing on Major Countries in East Asia (with J.W. Lee and S. Kang). <i>East Asian Economic Review</i>, 20(4), 469&ndash;491, 2016.</p>
-<details>
-<summary>[Bank of Korea publications, in Korean]</summary>
-<ul class="small">
-<li>The Determinants of FDI and Suggestions of Recent Changes in Korea (with Park et al.). <i>Economic Analysis</i>, 2015.</li>
-<li>The Influence of Domestic R&amp;D Expenditures on Productivity, Investment and Employment in Manufacturing (with M.K. Son). <i>Monthly Bulletin</i>, 2015.</li>
-<li>Causes of the Decline in Korea's Business Cycle Volatility and Implications (with Kang et al.). <i>BOK Issue Note</i> 2014-13.</li>
-<li>Measuring the Digital Sharing Economy in GDP: Recent International Discussion. <i>Statistical Research Series</i>, 2019.</li>
-<li>International Discussion of Measuring the Digital Economy. <i>Quarterly National Accounts Review</i>, 2019.</li>
-<li>Analysis of the Change in the Price Structure of the Gangwon Housing Market. Gangwon Regional Branch, 2016.</li>
-<li>Assessment of the Shift to Services in Emerging Economies. <i>International Economic Analysis</i>, 2012.</li>
-<li>The Surge in China's Coal Imports: Background and Implications. <i>International Economic Information</i>, 2012.</li>
-</ul>
-</details>
+<section aria-labelledby="h-pub">
+  <h2 id="h-pub">Publications</h2>
+  <div class="body">
+    <p class="title sm serif">Estimating Exchange Rate Exposure over Various Return Horizons: Focusing on Major Countries in East Asia</p>
+    <p class="meta">with J.W. Lee and S. Kang · <i>East Asian Economic Review</i>, 20(4), 469–491, 2016</p>
+    <details>
+      <summary>Bank of Korea publications, in Korean (8)</summary>
+      <ul class="boks">
+        <li>The Determinants of FDI and Suggestions of Recent Changes in Korea (with Park et al.). <i>Economic Analysis</i>, 2015.</li>
+        <li>The Influence of Domestic R&amp;D Expenditures on Productivity, Investment and Employment in Manufacturing (with M.K. Son). <i>Monthly Bulletin</i>, 2015.</li>
+        <li>Causes of the Decline in Korea's Business Cycle Volatility and Implications (with Kang et al.). <i>BOK Issue Note</i> 2014-13.</li>
+        <li>Measuring the Digital Sharing Economy in GDP: Recent International Discussion. <i>Statistical Research Series</i>, 2019.</li>
+        <li>International Discussion of Measuring the Digital Economy. <i>Quarterly National Accounts Review</i>, 2019.</li>
+        <li>Analysis of the Change in the Price Structure of the Gangwon Housing Market. Gangwon Regional Branch, 2016.</li>
+        <li>Assessment of the Shift to Services in Emerging Economies. <i>International Economic Analysis</i>, 2012.</li>
+        <li>The Surge in China's Coal Imports: Background and Implications. <i>International Economic Information</i>, 2012.</li>
+      </ul>
+    </details>
+  </div>
+</section>
 
-<h2>Teaching</h2>
-<p>Intermediate Macroeconomics (TA), University of Bristol, 2023&ndash;present<br>
-Economics (TA), University of Bristol, 2025/26</p>
+<section aria-labelledby="h-teach">
+  <h2 id="h-teach">Teaching</h2>
+  <div class="body">
+    <div class="row"><span>Intermediate Macroeconomics (TA), University of Bristol</span><span>2023–present</span></div>
+    <div class="row"><span>Economics (TA), University of Bristol</span><span>2025/26</span></div>
+  </div>
+</section>
 
-<h2>References</h2>
-<table><tr>
-<td>Hakki Yazici<br>University of Bristol<br><a href="mailto:hakki.yazici@bristol.ac.uk">hakki.yazici@bristol.ac.uk</a></td>
-<td>Pawel Doligalski<br>University of Bristol<br><a href="mailto:pawel.doligalski@bristol.ac.uk">pawel.doligalski@bristol.ac.uk</a></td>
-<td>Arpad Abraham<br>University of Bristol<br><a href="mailto:arpad.abraham@bristol.ac.uk">arpad.abraham@bristol.ac.uk</a></td>
-</tr></table>
+<section aria-labelledby="h-ref">
+  <h2 id="h-ref">References</h2>
+  <div class="body refs">
+    <div><p class="n">Hakki Yazici</p><p class="a">University of Bristol</p><a href="mailto:hakki.yazici@bristol.ac.uk">hakki.yazici@bristol.ac.uk</a></div>
+    <div><p class="n">Pawel Doligalski</p><p class="a">University of Bristol</p><a href="mailto:pawel.doligalski@bristol.ac.uk">pawel.doligalski@bristol.ac.uk</a></div>
+    <div><p class="n">Arpad Abraham</p><p class="a">University of Bristol</p><a href="mailto:arpad.abraham@bristol.ac.uk">arpad.abraham@bristol.ac.uk</a></div>
+  </div>
+</section>
 
-<p class="foot">School of Economics, University of Bristol, 12 Priory Road, Bristol BS8 1TU, United Kingdom</p>
+<footer>School of Economics, University of Bristol, 12 Priory Road, Bristol BS8 1TU, United Kingdom</footer>
+
 </div>
 </body>
 </html>
