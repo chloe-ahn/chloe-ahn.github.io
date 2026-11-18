@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chloe-ahn.github.io/sitemap.xml
